@@ -1,0 +1,42 @@
+/* ═══════════════════════════════════════════
+   Badge — sale / new / hot
+   ═══════════════════════════════════════════ */
+
+.badge {
+  --badge-bg: var(--clr-bg-elevated);
+  --badge-color: var(--clr-text-primary);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: 4px 10px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--badge-color);
+  background: var(--badge-bg);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.badge--sale {
+  --badge-bg: var(--clr-danger);
+  --badge-color: #fff;
+}
+
+.badge--new {
+  --badge-bg: var(--clr-info);
+  --badge-color: #fff;
+}
+
+.badge--hot {
+  --badge-bg: linear-gradient(135deg, #f87171, #fbbf24);
+  --badge-color: #fff;
+}
+
+.badge--stock {
+  --badge-bg: var(--clr-accent-soft);
+  --badge-color: var(--clr-accent);
+}

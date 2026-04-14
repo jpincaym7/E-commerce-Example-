@@ -1,0 +1,103 @@
+/* ═══════════════════════════════════════════
+   Design Tokens — Single Source of Truth
+   ═══════════════════════════════════════════ */
+
+:root {
+  /* ── Color Palette ── */
+  --clr-bg-primary:    #0a0a0f;
+  --clr-bg-secondary:  #12121a;
+  --clr-bg-elevated:   #1a1a26;
+  --clr-bg-glass:      rgba(255, 255, 255, 0.04);
+  --clr-bg-glass-hover:rgba(255, 255, 255, 0.08);
+
+  --clr-surface:       #1e1e2e;
+  --clr-surface-hover: #2a2a3e;
+  --clr-border:        rgba(255, 255, 255, 0.08);
+  --clr-border-hover:  rgba(255, 255, 255, 0.15);
+
+  --clr-text-primary:  #f0f0f5;
+  --clr-text-secondary:#8888a0;
+  --clr-text-muted:    #55556a;
+
+  --clr-accent:        #c8a24e;
+  --clr-accent-hover:  #dbb45e;
+  --clr-accent-glow:   rgba(200, 162, 78, 0.25);
+  --clr-accent-soft:   rgba(200, 162, 78, 0.10);
+
+  --clr-success:       #4ade80;
+  --clr-danger:        #f87171;
+  --clr-info:          #60a5fa;
+  --clr-warning:       #fbbf24;
+
+  /* ── Typography ── */
+  --ff-primary:   'Inter', system-ui, -apple-system, sans-serif;
+  --ff-display:   'Outfit', var(--ff-primary);
+
+  --fs-xs:    0.75rem;
+  --fs-sm:    0.8125rem;
+  --fs-base:  0.9375rem;
+  --fs-md:    1.0625rem;
+  --fs-lg:    1.25rem;
+  --fs-xl:    1.5rem;
+  --fs-2xl:   2rem;
+  --fs-3xl:   2.75rem;
+  --fs-4xl:   3.5rem;
+
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  --lh-tight:  1.2;
+  --lh-normal: 1.5;
+  --lh-relaxed:1.7;
+
+  /* ── Spacing Scale ── */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.25rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --sp-24: 6rem;
+
+  /* ── Border Radius ── */
+  --radius-sm:   0.375rem;
+  --radius-md:   0.625rem;
+  --radius-lg:   0.875rem;
+  --radius-xl:   1.25rem;
+  --radius-2xl:  1.5rem;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg:  0 8px 30px rgba(0,0,0,0.5);
+  --shadow-xl:  0 16px 50px rgba(0,0,0,0.6);
+  --shadow-glow:0 0 30px var(--clr-accent-glow);
+
+  /* ── Transitions ── */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring:cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:   150ms;
+  --dur-normal: 250ms;
+  --dur-slow:   400ms;
+
+  /* ── Z-Index Scale ── */
+  --z-base:     1;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  500;
+  --z-modal:    600;
+  --z-toast:    700;
+
+  /* ── Layout ── */
+  --container-max: 1280px;
+  --header-height: 72px;
+  --sidebar-width: 420px;
+}

@@ -1,0 +1,138 @@
+/* ═══════════════════════════════════════════
+   Form controls — input, select, qty stepper
+   ═══════════════════════════════════════════ */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.field__label {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--fs-sm);
+  color: var(--clr-text-primary);
+  background: var(--clr-bg-glass);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out);
+}
+
+.input::placeholder {
+  color: var(--clr-text-muted);
+}
+
+.input:hover,
+.select:hover {
+  border-color: var(--clr-border-hover);
+}
+
+.input:focus,
+.select:focus {
+  border-color: var(--clr-accent);
+  background: var(--clr-bg-glass-hover);
+  box-shadow: 0 0 0 3px var(--clr-accent-soft);
+}
+
+.select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath stroke='%238888a0' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m1 1.5 5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--sp-4) center;
+  padding-right: var(--sp-10);
+  cursor: pointer;
+}
+
+.select option {
+  background: var(--clr-bg-elevated);
+  color: var(--clr-text-primary);
+}
+
+/* ── Search input (header) ── */
+.search {
+  position: relative;
+  max-width: 360px;
+  width: 100%;
+}
+
+.search__icon {
+  position: absolute;
+  top: 50%;
+  left: var(--sp-4);
+  transform: translateY(-50%);
+  display: inline-flex;
+  color: var(--clr-text-muted);
+  pointer-events: none;
+}
+
+.search__icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.search .input {
+  padding-left: var(--sp-10);
+  background: var(--clr-bg-glass);
+  border-radius: var(--radius-full);
+}
+
+/* ── Quantity stepper ── */
+.qty {
+  display: inline-flex;
+  align-items: center;
+  background: var(--clr-bg-glass);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  height: 36px;
+}
+
+.qty__btn {
+  width: 36px;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: var(--fs-md);
+  color: var(--clr-text-secondary);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.qty__btn:hover:not(:disabled) {
+  background: var(--clr-bg-glass-hover);
+  color: var(--clr-accent);
+}
+
+.qty__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.qty__value {
+  min-width: 32px;
+  text-align: center;
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
+  color: var(--clr-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.qty--lg {
+  height: 44px;
+}
+
+.qty--lg .qty__btn {
+  width: 44px;
+}

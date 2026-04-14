@@ -1,0 +1,76 @@
+/* ═══════════════════════════════════════════
+   Toast — notificaciones flotantes
+   ═══════════════════════════════════════════ */
+
+.toast-stack {
+  position: fixed;
+  bottom: var(--sp-6);
+  right: var(--sp-6);
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  pointer-events: none;
+  max-width: 380px;
+}
+
+.toast {
+  --toast-accent: var(--clr-accent);
+
+  pointer-events: auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5);
+  background: var(--clr-bg-elevated);
+  border: 1px solid var(--clr-border);
+  border-left: 3px solid var(--toast-accent);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  animation: slideUp var(--dur-normal) var(--ease-spring);
+}
+
+.toast.is-leaving {
+  animation: fadeIn var(--dur-normal) var(--ease-out) reverse forwards;
+}
+
+.toast--success { --toast-accent: var(--clr-success); }
+.toast--info    { --toast-accent: var(--clr-info); }
+.toast--warning { --toast-accent: var(--clr-warning); }
+.toast--danger  { --toast-accent: var(--clr-danger); }
+
+.toast__icon {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  color: var(--toast-accent);
+  background: color-mix(in srgb, var(--toast-accent) 12%, transparent);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.toast__icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.toast__body {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-primary);
+  line-height: var(--lh-normal);
+}
+
+.toast__close {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  color: var(--clr-text-muted);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-sm);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.toast__close:hover { color: var(--clr-text-primary); }
