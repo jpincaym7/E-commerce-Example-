@@ -17,7 +17,7 @@ const state = {
     sort: 'relevance',
     query: '',
   },
-  ui: { cartOpen: false, sidebarOpen: false, quickView: null },
+  ui: { cartOpen: false, sidebarOpen: false, quickView: null, checkoutOpen: false },
 };
 
 const emit = (key) => {
@@ -156,9 +156,12 @@ export const ui = {
   closeSidebar() { state.ui = { ...state.ui, sidebarOpen: false }; emit('ui'); },
   openQuick(id)  { state.ui = { ...state.ui, quickView: id }; emit('ui'); },
   closeQuick()   { state.ui = { ...state.ui, quickView: null }; emit('ui'); },
+  openCheckout() { state.ui = { ...state.ui, checkoutOpen: true, cartOpen: false }; emit('ui'); },
+  closeCheckout(){ state.ui = { ...state.ui, checkoutOpen: false }; emit('ui'); },
   closeAny() {
-    if (state.ui.quickView)   return this.closeQuick();
-    if (state.ui.sidebarOpen) return this.closeSidebar();
-    if (state.ui.cartOpen)    return this.closeCart();
+    if (state.ui.checkoutOpen) return this.closeCheckout();
+    if (state.ui.quickView)    return this.closeQuick();
+    if (state.ui.sidebarOpen)  return this.closeSidebar();
+    if (state.ui.cartOpen)     return this.closeCart();
   },
 };

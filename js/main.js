@@ -11,6 +11,7 @@ import { mountBreadcrumbs } from './components/breadcrumbs.js';
 import { mountProductGrid, mountSortSelect } from './components/productGrid.js';
 import { mountCart, mountCartBadge } from './components/cart.js';
 import { mountModal } from './components/modal.js';
+import { mountCheckout } from './components/checkout.js';
 import { mountToastStack, toast } from './components/toast.js';
 
 /* ── Mount all components ── */
@@ -21,6 +22,7 @@ mountProductGrid($('#product-grid'), $('#product-count'));
 mountCart($('#cart-drawer'));
 mountCartBadge($('#cart-badge'));
 mountModal($('#quick-view'));
+mountCheckout($('#checkout-modal'));
 mountToastStack($('#toast-stack'));
 
 /* ── Hydrate hero with featured product ── */
@@ -49,7 +51,7 @@ if (filterToggle) {
 subscribe('ui', (u) => {
   document.body.classList.toggle(
     'overlay-active',
-    u.cartOpen || u.sidebarOpen || !!u.quickView,
+    u.cartOpen || u.sidebarOpen || u.checkoutOpen || !!u.quickView,
   );
 });
 
@@ -88,12 +90,13 @@ const handlers = {
     toast('Carrito vaciado', 'info');
   },
   checkout() {
-    const total = cart.subtotal();
-    if (total === 0) return;
-    toast(`Checkout simulado · ${formatPrice(total)}`, 'success');
-    cart.clear();
-    ui.closeCart();
+    if (cart.count() === 0) {
+      toast('Tu carrito está vacío', 'warning');
+      return;
+    }
+    ui.openCheckout();
   },
+  'close-checkout'() { ui.closeCheckout(); },
   'set-category'(_id, btn) {
     filters.setCategory(btn.dataset.value);
   },
@@ -145,10 +148,15 @@ document.addEventListener('modal:backdrop', () => ui.closeQuick());
 /* ── Backdrop click: close drawer/modal/sidebar when clicking outside ── */
 document.addEventListener('click', (e) => {
   if (!document.body.classList.contains('overlay-active')) return;
-  const drawer  = $('#cart-drawer');
-  const modal   = $('#quick-view');
-  const sidebar = $('#sidebar');
-  if (drawer.contains(e.target) || modal.contains(e.target) || sidebar.contains(e.target)) return;
+  const drawer   = $('#cart-drawer');
+  const modal    = $('#quick-view');
+  const sidebar  = $('#sidebar');
+  const checkout = $('#checkout-modal');
+  if (drawer.contains(e.target)   ||
+      modal.contains(e.target)    ||
+      sidebar.contains(e.target)  ||
+      (checkout && checkout.classList.contains('is-open') &&
+       e.target.closest('.checkout-modal__card'))) return;
   if (e.target.closest('[data-action]')) return;
   ui.closeAny();
 });
